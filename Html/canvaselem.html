@@ -1,0 +1,21 @@
+<!Doctype html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1 class="mclass">Hello at start</h1>
+        <canvas id="canvastest" width="500" height="600" style="border:1px solid" > 
+
+        </canvas>
+        <script>
+            // access the canvas object
+            var canvasObj = document.getElementById("canvastest");
+            // return the pixel/graphics control of canvas
+            var context = canvasObj.getContext("2d");
+            context.moveTo(0, 0);
+            context.lineTo(500, 600);
+            context.stroke();
+        </script>
+    </body>
+</html>

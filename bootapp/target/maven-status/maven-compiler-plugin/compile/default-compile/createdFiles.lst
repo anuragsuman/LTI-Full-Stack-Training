@@ -1,0 +1,3 @@
+com\lti\training\bootapp\entity\Student.class
+com\lti\training\bootapp\BootappApplication.class
+com\lti\training\bootapp\controller\HomeController.class

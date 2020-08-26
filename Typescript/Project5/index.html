@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">
+            var a = 1; // global variable
+
+            function increment(){
+                a = a + 1;
+                return a;
+            }
+
+            function increment_pro(){
+                var a = 1; // local variable
+                a = a + 1;
+                return a;
+            }
+
+            // javascript allows to have inner function
+            function increment_inner(){
+                var counter = 0; // local (safe)
+
+                // inner function (handle increment)
+                function incr_fun(){
+                    // inner function has access over outer scope
+                    counter++;
+                }
+                incr_fun();
+                return counter;
+            }
+
+            // implement closure (IIFE : Implicitly Invocking Function Expression)
+
+            // outer anonymous function
+            // inner anonymous function
+            // inner function returning value
+            // inner_fun var is going to refer to definition of inner function
+            var inner_fun = (function (){
+                var counter = 0; // local (safe)
+                // return 20;
+                // inner function (handle increment)
+                // returning funtion definition
+                return function (){
+                    var x = 10;
+                    // inner function has access over outer scope
+                    // closure : have access over outer variable even after outer function terminates
+                    counter++;
+                    return counter;
+                }
+            })(); // calling the function also (once)
+            // function definition calling itself
+
+            function showCount(){
+                // var counter = increment();
+                // var counter = increment_pro();
+                // var counter = increment_inner();
+                var counter = inner_fun(); // call the inner function
+                document.getElementById('pid').innerHTML = counter;
+            }
+
+            function bad_fun(){
+                a = 10;
+            }
+
+
+
+        </script>
+    </head>
+    <body>
+        <h1>Hello All</h1>
+        <p id="pid"></p>
+        <p>
+            <input type="button" value="Increment" onclick="showCount()" />
+
+        </p>
+        
+    </body>
+</html>

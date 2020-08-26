@@ -1,0 +1,43 @@
+CREATE OR REPLACE PROCEDURE EMP_DATA AS 
+    e_id employee.id%type := 4;
+    e_name employee.name%type;
+    my_exception EXCEPTION;
+    
+BEGIN
+    IF e_id <=0 THEN
+        RAISE my_exception;    
+    END IF;
+  SELECT name INTO e_name FROM EMPLOYEE WHERE id = e_id;
+  DBMS_OUTPUT.PUT_LINE('NAME : ' || e_name);
+  
+EXCEPTION
+    WHEN NO_DATA_FOUND OR ZERO_DIVIDE  THEN
+        DBMS_OUTPUT.PUT_LINE('NO RECORDS FOUND');
+    WHEN my_exception  THEN
+        DBMS_OUTPUT.PUT_LINE('INVALID ID');
+    -- General Exception    
+    WHEN OTHERS THEN 
+        DBMS_OUTPUT.PUT_LINE('SOME PROBLEM');
+    
+END EMP_DATA;
+
+
+/**************************************************/
+create or replace PROCEDURE dummy_new(msg IN varchar2)
+AS
+name varchar(20);
+BEGIN
+dbms_output.put_line('Message : ' || msg);
+END dummy_new;
+
+/*******************************************************/
+
+CREATE OR REPLACE PROCEDURE INSERT_EMPLOYEE 
+(
+  ENAME IN VARCHAR2 
+, EMAIL IN VARCHAR2 
+, AGE IN NUMBER 
+) AS 
+BEGIN
+  INSERT INTO EMPLOYEE ("NAME","EMAIL","AGE") values(ENAME,EMAIL,AGE);
+END INSERT_EMPLOYEE;
