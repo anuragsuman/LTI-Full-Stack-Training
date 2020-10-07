@@ -11,8 +11,8 @@ import com.lti.training.postmicro.dto.UserDetailDto;
 
 
 // need to specify as to connect with which MS
-// @FeignClient(name = "user-micro")
-@FeignClient(name = "api-gateway")
+ @FeignClient(name = "user-micro")
+//@FeignClient(name = "api-gateway")
 @RibbonClient(name = "user-micro")
 public interface UserServiceProxy {
 	
